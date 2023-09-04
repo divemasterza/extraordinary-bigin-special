@@ -1,0 +1,138 @@
+/* Hero Section */
+.hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+}
+
+.hero-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  position: absolute;
+  color: white;
+  text-align: center;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 3em;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.cta-btn {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  background-color: #f04e23;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #c03d1a;
+}
+
+.special-details {
+  margin: 2em 0;
+}
+
+.special-details p {
+  margin-bottom: 1em;
+}
+
+.sidebar {
+  margin-top: 2em;
+}
+
+.enquiry-form, .callback-form {
+  border-radius: 0;
+}
+
+.enquiry-form h2, .callback-form h2 {
+  margin-bottom: 1em;
+}
+
+.ending-soon-callout {
+  display: inline-block;
+  background-color: #f04e23;
+  color: white;
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  border-radius: 4px;
+}
+
+.content-section {
+  display: flex;
+}
+
+.content-two-thirds {
+  flex: 2;
+  padding: 30px;
+  margin: 30px;
+}
+
+.content-one-third {
+  flex: 1;
+  padding: 30px;
+}
+
+.content-two-thirds strong {
+  font-size: 1.5em;
+}
+
+/* Mobile and Tablet Styles */
+@media (max-width: 767px) {
+    .hero-content h1 {
+        font-size: 1.5em;
+    }
+
+    .cta-btn {
+        padding: 0.25em 0.5em;
+    }
+
+    .content-section {
+        flex-direction: column;
+    }
+
+    .content-two-thirds, .content-one-third {
+        width: 100%;
+        margin: 15px 0;
+        padding: 15px;
+    }
+}
+
+/* Desktop and above */
+@media (min-width: 768px) {
+    .hero-content h1 {
+        font-size: 3em;
+    }
+
+    .cta-btn {
+        padding: 0.5em 1em;
+    }
+
+    .content-section {
+        flex-direction: row;
+    }
+
+    .content-two-thirds {
+        flex: 2;
+        padding: 30px;
+        margin: 30px;
+    }
+
+    .content-one-third {
+        flex: 1;
+        padding: 30px;
