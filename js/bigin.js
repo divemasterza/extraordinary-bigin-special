@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    // Retrieve the property name from localized variable
+    // Retrieve the property name from localised variable
     var propertyName = es_php_vars.property_name;
 
     // Set the value of the input field to the property name
@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
             links.forEach(link => {
                 let currentUrl = link.href;
     
-                // Check if the URL has the structure you mentioned
+                // Check if the URL has the structure
                 if (/https:\/\/apps.hti-systems.com\/extraordinary\/[a-zA-Z0-9]+\/desktop.html/.test(currentUrl)) {
                     // Replace 'desktop' with 'mobile'
                     let mobileUrl = currentUrl.replace('/desktop.html', '/mobile.html');
