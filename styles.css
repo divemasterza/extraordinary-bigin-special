@@ -414,6 +414,14 @@ html {
     background-color:#c03d1a !important;
 }
 
+/* Submision Height Fix*/
+
+.iframe-container{
+  display: block;
+  width: 100%;
+  min-height: 310px;
+}
+
 
 /* Media Queries */
 
