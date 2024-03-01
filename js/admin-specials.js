@@ -1,12 +1,12 @@
-jQuery(function($) {
+jQuery(function ($) {
     var file_frame;
 
     // Admin side: Image addition and removal for the gallery
-    $(document).on('click', '#add-gallery-image', function(event) {
+    $(document).on('click', '#add-gallery-image', function (event) {
         event.preventDefault();
 
         var image_ids = $('#image-ids').val() ? $('#image-ids').val().split(',') : [];
-        if(image_ids.length >= 8) {
+        if (image_ids.length >= 8) {
             alert('Max limit of 8 images reached');
             return;
         }
@@ -19,14 +19,14 @@ jQuery(function($) {
             multiple: true
         });
 
-        file_frame.on('select', function() {
-            var attachments = file_frame.state().get('selection').map( 
-                function( attachment ) {
+        file_frame.on('select', function () {
+            var attachments = file_frame.state().get('selection').map(
+                function (attachment) {
                     return attachment.toJSON();
-            });
+                });
 
-            attachments.forEach(function(attachment) {
-                if(image_ids.length >= 8) {
+            attachments.forEach(function (attachment) {
+                if (image_ids.length >= 8) {
                     return;
                 }
 
@@ -40,7 +40,7 @@ jQuery(function($) {
         file_frame.open();
     });
 
-    $(document).on('click', '.remove-gallery-image', function() {
+    $(document).on('click', '.remove-gallery-image', function () {
         var image_id = $(this).data('id');
         var image_ids = $('#image-ids').val().split(',');
 
@@ -50,25 +50,7 @@ jQuery(function($) {
         if (index > -1) {
             image_ids.splice(index, 1);
         }
-        
+
         $('#image-ids').val(image_ids.join(','));
     });
-
-    // Frontend: Initialize slick only if not in the admin area
-    if (!$('body').hasClass('wp-admin')) {
-        $('.slick-slider').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: true,
-            responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 'auto',
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
-    }
 });

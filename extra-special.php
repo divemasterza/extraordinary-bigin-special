@@ -3,8 +3,8 @@
 Plugin Name: Extraordinary Specials
 Plugin URI: https://bigambitions.co.za/
 Description: This is a custom plugin that creates a 'Specials' post type with custom fields.
-Version: 1.0
-Author: Steph
+Version: 1.1
+Author: Steph / Ash
 Author URI: https://bigambitions.co.za/
 */
 
@@ -44,32 +44,34 @@ function es_enqueue_styles()
 }
 add_action('wp_enqueue_scripts', 'es_enqueue_styles');
 
-$property_name = get_option('es_property_name');
-$data_array = array(
-    'property_name' => $property_name
-);
 
-wp_enqueue_script('es-custom-script', plugin_dir_url(__FILE__) . '/js/bigin.js', array('jquery'), '', true);
+function enqueue_custom_scripts()
+{
+    $property_name = get_option('es_property_name');
+    $data_array = array('property_name' => $property_name);
 
-wp_localize_script('es-custom-script', 'es_php_vars', $data_array);
+    wp_enqueue_script('es-custom-script', plugin_dir_url(__FILE__) . '/js/bigin.js', array('jquery'), '', true);
+    wp_localize_script('es-custom-script', 'es_php_vars', $data_array);
+}
 
+add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
 
 
 function enqueue_slick_assets()
 {
-    // Check if we are on the frontend
     if (!is_admin()) {
-        // Enqueue Slick CSS
-        wp_enqueue_style('slick-css', plugin_dir_url(__FILE__) . '/vendors/slick/slick.css', array(), '1.8.1');
-        // Enqueue Slick Theme CSS (Optional)
-        wp_enqueue_style('slick-theme-css', plugin_dir_url(__FILE__) . '/vendors/slick/slick-theme.css', array(), '1.8.1');
-        // Enqueue Slick JS
-        wp_enqueue_script('slick-js', plugin_dir_url(__FILE__) . '/vendors/slick/slick.min.js', array('jquery'), '1.8.1', true);
-        wp_enqueue_script('specials-js', plugin_dir_url(__FILE__) . '/js/slick-initializer.js', array('jquery', 'slick-js'), '1.0.0', true);
+        wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css');
+        wp_enqueue_script('swiper-js', 'https://unpkg.com/swiper/swiper-bundle.min.js', array(), null, true);
     }
 }
 add_action('wp_enqueue_scripts', 'enqueue_slick_assets');
+function enqueue_swiper_init_script()
+{
+    wp_enqueue_script('swiper-init', plugin_dir_url(__FILE__) . '/js/swiper-init.js', array('swiper-js'), '1.0.0', true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_swiper_init_script');
+
 
 // This function will return the path to the 'specials' templates in the plugin
 function es_get_template($template)
