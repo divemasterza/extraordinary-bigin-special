@@ -33,7 +33,7 @@ get_header(); ?>
                   </svg>
                 </div>
                 <div class="item">
-                  <p>Pricing: R<?php echo $price; ?></p>
+                  <p>From: R<?php echo $price; ?></p>
                   <small><?php echo ucwords(strtolower($packages)) ?></small>
                 </div>
               </div>
