@@ -15,7 +15,7 @@ get_header(); ?>
             <!-- Hero Section Start -->
             <div class="hero-section">
                             <?php if ($ending_soon) : ?>
-                <div class="ending-soon-callout ribbon right">Ending Soon!</div>
+                <div class="ending-soon-callout esp-ribbon esp-ribbon-right">Ending Soon!</div>
             <?php endif; ?>
                 <?php the_post_thumbnail('full'); ?>
                 <div class="hero-content">

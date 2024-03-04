@@ -26,7 +26,7 @@ get_header(); ?>
                         <div class="special-img-wrapper">
                         <img class="special-img" src="<?php echo $image[0]; ?>">
                         <?php if (get_post_meta(get_the_ID(), '_ending_soon', true) === 'true') : ?>
-                            <div class="ending-soon-callout ribbon right">Ending Soon!</div>
+                            <div class="ending-soon-callout esp-ribbon esp-ribbon-right">Ending Soon!</div>
                         <?php endif; ?>
                                <h2><?php the_title(); ?></h2>
                         </div>
