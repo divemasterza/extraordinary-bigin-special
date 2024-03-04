@@ -114,18 +114,18 @@ html {
 
 /* Ribbon */
 
-.ribbon{
+.esp-ribbon{
   position: absolute;
   background: #f04e23;
   box-shadow: 0 0 0 999px #f04e23;
   clip-path: inset(0 -100%);
 }
-.left {
+.esp-ribbon-left {
   inset: 0 auto auto 0; /* top and left equal to 0 */
   transform-origin: 100% 0; /* OR top right */
   transform: translate(-29.3%) rotate(-45deg);
 }
-.right {
+.esp-ribbon-right {
   inset: 0 0 auto auto; /* top and right equal to 0 */
   transform-origin: 0 0; /* OR top left */
   transform: translate(29.3%) rotate(45deg);
