@@ -1,10 +1,17 @@
 jQuery(document).ready(function($) {
     // Retrieve the property name from localised variable
     var propertyName = es_php_vars.property_name;
+    
+    jQuery(".wf-form-wrapper").prepend("<input fvalidate='true' ftype='url' name='POTENTIALCF1' maxlength='255' type='text' value='' class='wf-field-item wf-field-input' style='display:none' oninput='removeError(this)'/>")
+    jQuery(".wf-form-wrapper").prepend("<input name='POTENTIALCF3' maxlength='255' type='text' value='' class='wf-field-item wf-field-input' style='display:none'  oninput='removeError(this)'/>")
 
     // Set the value of the input field to the property name
     var inputField = $("input[name='POTENTIALCF3']");
     inputField.val(propertyName);
+    
+    // Get Set Url
+    var getOrigin = jQuery(location).attr('hostname');
+    jQuery("input[name='POTENTIALCF1']").val(getOrigin);
 
     // Hide the input field container and its label
     var fieldContainer = inputField.closest('.wf-field');
