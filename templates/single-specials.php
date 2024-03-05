@@ -43,7 +43,7 @@ get_header(); ?>
 }
 
 .wf-field-mandatory .wf-field-inner::before {
-    background-color:<?echo $accent_color;?>;
+    background-color:<?echo $accent_color;?> !important;
 }
 
 .wf-field-input:focus {
