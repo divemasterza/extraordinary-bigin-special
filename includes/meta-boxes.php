@@ -10,8 +10,8 @@ class SpecialsMetaBox
 
     public function add()
     {
-        add_meta_box('specials_meta_box', 'Specials Information', array($this, 'display'), 'specials', 'normal', 'high');
-        add_meta_box('hs_specials_images', 'Image Gallery', array($this, 'imagesCallback'), 'specials');
+        add_meta_box('specials_meta_box', 'Specials Information', array($this, 'display'), 'exclusive-offers', 'normal', 'high');
+        add_meta_box('hs_specials_images', 'Image Gallery', array($this, 'imagesCallback'), 'exclusive-offers');
     }
 
     public function display($special)

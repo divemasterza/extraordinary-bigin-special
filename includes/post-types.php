@@ -3,8 +3,8 @@
 function hs_create_specials_post_type()
 {
     $labels = array(
-        'name' => __('Specials'),
-        'singular_name' => __('Special')
+        'name' => __('Exclusive Offers'),
+        'singular_name' => __('Exclusive Offer')
     );
 
     $args = array(
@@ -12,9 +12,9 @@ function hs_create_specials_post_type()
         'public' => true,
         'has_archive' => true,
         'supports' => array('title', 'editor', 'thumbnail'),
-        'rewrite' => array('slug' => 'specials'),
+        'rewrite' => array('slug' => 'exclusive-offers'),
     );
 
-    register_post_type('specials', $args);
+    register_post_type('exclusive-offers', $args);
 }
 add_action('init', 'hs_create_specials_post_type');

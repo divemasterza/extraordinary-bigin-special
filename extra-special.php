@@ -3,8 +3,8 @@
 Plugin Name: Extraordinary Specials
 Plugin URI: https://bigambitions.co.za/
 Description: This is a custom plugin that creates a 'Specials' post type with custom fields.
-Version: 1.1
-Author: Steph / Ash
+Version: 1.0
+Author: Steph
 Author URI: https://bigambitions.co.za/
 */
 
@@ -76,7 +76,7 @@ add_action('wp_enqueue_scripts', 'enqueue_swiper_init_script');
 // This function will return the path to the 'specials' templates in the plugin
 function es_get_template($template)
 {
-    if (get_post_type() === 'specials') {
+    if (get_post_type() === 'exclusive-offers') {
         if (is_archive()) {
             // Checks if the file exists in the theme first
             if ($theme_file = locate_template(array('archive-specials.php'))) {
@@ -102,7 +102,7 @@ function es_check_expiring_specials()
 {
     // WP Query to get all 'specials' posts
     $args = array(
-        'post_type' => 'specials',
+        'post_type' => 'exclusive-offers',
         'post_status' => 'publish',
         'posts_per_page' => -1,
     );
