@@ -3,7 +3,7 @@
 Plugin Name: Extraordinary Specials
 Plugin URI: https://bigambitions.co.za/
 Description: This is a custom plugin that creates a 'Specials' post type with custom fields.
-Version: 1.0
+Version: 1.1
 Author: Steph
 Author URI: https://bigambitions.co.za/
 */
