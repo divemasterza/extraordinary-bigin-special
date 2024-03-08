@@ -232,6 +232,7 @@ html {
     flex-wrap:wrap;
     gap:14px;
     margin-top:-20px;
+    min-height: 300px;
 }
 
 .esp-special-information-card p{
@@ -258,6 +259,7 @@ html {
 .esp-special-information-card .esp-item-wrapper:last-child{
    justify-content:end;
    margin-top:10px;
+   align-items: end;
 }
 
 .esp-special-information-card .esp-item-wrapper .esp-item:first-child{
