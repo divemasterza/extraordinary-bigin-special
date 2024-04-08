@@ -1,9 +1,12 @@
 <?php
 $accent_color = get_option('es_accent_color');
+$cform_title = get_option('es_form_title');
 $validity_date = get_post_meta(get_the_ID(), '_validity_date', true);
 $price = get_post_meta(get_the_ID(), '_price', true);
 $packages = get_post_meta(get_the_ID(), '_packages', true);
 $ending_soon = get_post_meta(get_the_ID(), '_ending_soon', true) === 'true';
+$children_visbility = get_option('es_children_rads');
+$placeholders_status = get_option('es_dynamic_placeholders');
 
 get_header(); ?>
 
@@ -50,6 +53,18 @@ get_header(); ?>
     border-color: <?echo $accent_color;?> !important;
 }
 
+<?php 
+
+if($children_visbility == 'show'){
+
+    echo 'input[name="POTENTIALCF53"]{display:block;}';
+}
+
+else{
+    echo 'input[name="POTENTIALCF53"]{display:none;}';
+}
+
+?>
 
 </style>
 
@@ -161,6 +176,7 @@ get_header(); ?>
                 </div>
 
                 <div class="esp-content-one-third">
+                <div class="esp-form-title"><?php echo $cform_title; ?></div>
                     <div class="esp-enquiry-form" id="enquiry-form">
                         <?php echo get_option('es_form_code', ''); ?>
                     </div>
@@ -171,3 +187,20 @@ get_header(); ?>
 </main>
 
 <?php get_footer(); ?>
+
+<?php 
+
+if ($placeholders_status == 'show') {
+    echo "<script>
+    
+        jQuery(document).ready(function() {
+          jQuery('.wf-row').each(function() {
+              var text = jQuery(this).find('.wf-label').text();
+              jQuery(this).find('input').attr('placeholder', text);
+          });
+      });
+    
+        </script>";
+}
+
+?>
