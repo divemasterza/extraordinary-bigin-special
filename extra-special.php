@@ -3,8 +3,8 @@
 Plugin Name: Extraordinary Specials
 Plugin URI: https://bigambitions.co.za/
 Description: This is a custom plugin that creates a 'Specials' post type with custom fields.
-Version: 1.1
-Author: Steph
+Version: 1.2
+Author: Steph & Ash
 Author URI: https://bigambitions.co.za/
 */
 
@@ -204,6 +204,33 @@ function es_register_settings()
         'es_ending_soon_section'
     );
 
+    register_setting('extraordinary-specials', 'es_form_title');
+    add_settings_field(
+        'es_form_title',
+        'Form Title',
+        'es_render_form_title_field',
+        'extraordinary-specials',
+        'es_ending_soon_section'
+    );
+
+    register_setting('extraordinary-specials', 'es_children_rads');
+    add_settings_field(
+        'es_children_rads',
+        'Hide / Show Children Fields',
+        'es_render_children_rad_field',
+        'extraordinary-specials',
+        'es_ending_soon_section'
+    );
+
+    register_setting('extraordinary-specials', 'es_dynamic_placeholders');
+    add_settings_field(
+        'es_placeholders',
+        'Enable Dynamic Placeholders',
+        'es_render_placeholders_rad_field',
+        'extraordinary-specials',
+        'es_ending_soon_section'
+    );
+
     register_setting('extraordinary-specials', 'es_form_code');
     add_settings_field(
         'es_form_code',
@@ -242,11 +269,34 @@ function es_render_ending_soon_days_field()
     echo '<input type="number" min="0" name="es_ending_soon_days" value="' . $ending_soon_days . '" />';
 }
 
+function es_render_form_title_field()
+{
+    $cform_title = get_option('es_form_title', '');
+    echo '<input type="text" name="es_form_title" value="' . esc_attr($cform_title) . '" class="text-field" />';
+}
+
+function es_render_children_rad_field()
+{
+    $children_visbility = get_option('es_children_rads', 'show');
+
+    echo '<input type="radio" name="es_children_rads" value="show" ' . checked( 'show', $children_visbility, false ) . '/> Display Children &nbsp';
+    echo '<input type="radio" name="es_children_rads" value="hide" ' . checked( 'hide', $children_visbility, false ) . '/> Hide Children';
+}
+
+function es_render_placeholders_rad_field()
+{
+    $placeholders_status = get_option('es_dynamic_placeholders', 'show');
+
+    echo '<input type="radio" name="es_dynamic_placeholders" value="show" ' . checked( 'show', $placeholders_status, false ) . '/> Enable &nbsp';
+    echo '<input type="radio" name="es_dynamic_placeholders" value="hide" ' . checked( 'hide', $placeholders_status, false ) . '/> Disable';
+}
+
 function es_render_accent_color_field()
 {
     $accent_color = get_option('es_accent_color', '#f04e23');
     echo '<input type="text" name="es_accent_color" value="' . esc_attr($accent_color) . '" class="color-field" />';
 }
+
 
 function es_render_form_code_field()
 {
