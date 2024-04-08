@@ -442,6 +442,30 @@ html {
   min-height: 310px;
 }
 
+/* Hide Hidden Inputs*/
+
+input[name="POTENTIALCF1"]{
+  display: none !important;
+}
+
+input[name="POTENTIALCF3"]{
+  display: none !important;
+}
+
+.wf-header{
+  display: none;
+}
+
+.esp-form-title{
+  font-size: 22px;
+  padding-bottom: 15px;
+  font-weight: normal;
+  color: #000;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold !important;
+  padding-bottom: 25px !important;
+}
 
 /* Media Queries */
 
