@@ -3,7 +3,7 @@
 Plugin Name: Extraordinary Specials
 Plugin URI: https://bigambitions.co.za/
 Description: This is a custom plugin that creates a 'Specials' post type with custom fields.
-Version: 1.2
+Version: 1.2.1
 Author: Steph & Ash
 Author URI: https://bigambitions.co.za/
 */
@@ -195,6 +195,15 @@ function es_register_settings()
         'es_ending_soon_section'
     );
 
+    register_setting('extraordinary-specials', 'es_archive_title_rads');
+    add_settings_field(
+        'es_archive_title_rads',
+        'Hide / Show Archive Title',
+        'es_render_archive_title_rad_field',
+        'extraordinary-specials',
+        'es_ending_soon_section'
+    );
+
     register_setting('extraordinary-specials', 'es_accent_color', 'sanitize_hex_color');
     add_settings_field(
         'es_accent_color',
@@ -212,7 +221,7 @@ function es_register_settings()
         'extraordinary-specials',
         'es_ending_soon_section'
     );
-
+    
     register_setting('extraordinary-specials', 'es_children_rads');
     add_settings_field(
         'es_children_rads',
@@ -273,6 +282,16 @@ function es_render_form_title_field()
 {
     $cform_title = get_option('es_form_title', '');
     echo '<input type="text" name="es_form_title" value="' . esc_attr($cform_title) . '" class="text-field" />';
+}
+
+function es_render_archive_title_rad_field()
+{
+    $archive_title_visbility = get_option('es_archive_title_rads', 'show');
+
+    echo '<input type="radio" name="es_archive_title_rads" value="show" ' . checked( 'show', $archive_title_visbility, false ) . '/> Display Title &nbsp';
+    echo '<input type="radio" name="es_archive_title_rads" value="hide" ' . checked( 'hide', $archive_title_visbility, false ) . '/> Hide Title';
+
+    return $archive_title_visbility;
 }
 
 function es_render_children_rad_field()

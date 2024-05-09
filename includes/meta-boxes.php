@@ -72,12 +72,13 @@ class SpecialsMetaBox
     {
         echo '<div id="image-gallery">';
         foreach ($image_ids as $image_id) {
-            $image_src = wp_get_attachment_image_src($image_id, 'thumbnail');
-            echo '<div class="gallery-image"><img src="' . $image_src[0] . '"><button class="remove-gallery-image" data-id="' . $image_id . '">Remove</button></div>';
+            if (!empty($image_id)) {
+                $image_src = wp_get_attachment_image_src($image_id, 'thumbnail');
+                echo '<div class="gallery-image"><img src="' . $image_src[0] . '"><button class="remove-gallery-image" data-id="' . $image_id . '">Remove</button></div>';
+            }
         }
         echo '</div>';
     }
-
     public function enqueueScripts()
     {
         wp_enqueue_media();

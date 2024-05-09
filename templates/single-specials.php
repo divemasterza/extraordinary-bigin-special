@@ -66,7 +66,9 @@ else{
 
 ?>
 
+
 </style>
+ 
 
 <!-- Plugin Color Setting End -->
 
@@ -96,7 +98,21 @@ else{
                   </svg>
                 </div>
                 <div class="esp-item">
-                  <p>From: R<?php echo $price; ?></p>
+                <p><?php 
+                  if (empty($price)) {
+                      if(current_user_can('administrator')) {
+                          echo "Price is not set.";
+                      }
+                      else{
+                          echo "Coming soon.";
+                      }
+                  
+                  }
+                  else{
+                    echo "From: R" . $price;
+                  }
+                  
+                  ?></p>
                   <small><?php echo ucwords(strtolower($packages)) ?></small>
                 </div>
               </div>
@@ -110,12 +126,25 @@ else{
                   </svg>
                 </div>
                 <div class="esp-item">
-                  <p>Expires on: <?php 
+                  <p> <?php 
                   
                   $getdate = DateTime::createFromFormat('Y-m-d', $validity_date);
-                  $formatdate = $getdate->format('j F Y');
+                  if ($getdate === false) {
+                      if(current_user_can('administrator')) {
+                          echo "Date is not set.";
+                      }
+                      else{
+                          echo "Coming soon.";
+                      
+                      }
+                   
+                  }
                   
-                  echo $formatdate;
+                  else{
+                    $formatdate = $getdate->format('j F Y');
+                    echo "Expires on: ". $formatdate;
+                  }
+               
                   
                   ?></p>
                   <small>Terms &amp; Conditions Apply</small>
@@ -176,8 +205,8 @@ else{
                 </div>
 
                 <div class="esp-content-one-third">
-                <div class="esp-form-title"><?php echo $cform_title; ?></div>
                     <div class="esp-enquiry-form" id="enquiry-form">
+                        <div class="esp-form-title"><?php echo $cform_title; ?></div>
                         <?php echo get_option('es_form_code', ''); ?>
                     </div>
                 </div>
