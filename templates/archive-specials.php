@@ -32,6 +32,7 @@ get_header(); ?>
                 <h1>';
                 post_type_archive_title();
                 echo '</h1>';
+                echo '</header>';
             } 
             ?>
             <div class="esp-specials-grid">
